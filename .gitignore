@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.DS_Store
 env/
 build/
 develop-eggs/
@@ -20,11 +21,13 @@ lib64/
 parts/
 sdist/
 var/
+models/
 wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
+*.csv
+*.txt
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
