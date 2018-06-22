@@ -39,7 +39,7 @@ def create_glove_embeddings(tokenizer, EMBEDDING_DIM, MAX_NUM_WORDS, data = None
         embedding_vector = embeddings_index.get(word)
         if(embedding_vector is not None):
             embedding_matrix[i] = embedding_vector
-    return Embedding(input_dim=MAX_NUM_WORDS, output_dim=EMBEDDING_DIM,
+    return Embedding(input_dim=MAX_NUM_WORDS, output_dim=EMBEDDING_DIM, input_length = MAX_SEQ_LENGTH,
                      weights=[embedding_matrix], trainable=True)
 
 def create_word2vec_embeddings(tokenizer, EMBEDDING_DIM, MAX_NUM_WORDS, data = None, use_text8 = False):
