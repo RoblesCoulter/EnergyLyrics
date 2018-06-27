@@ -56,10 +56,12 @@ def build_cnn(embedding_layer=None, num_words=None,
     # emb_layer = embedding_layer(x_in)
     if dropout_rate:
         # emb_layer  = Dropout(dropout_rate)(x_in)
-        x_in = Dropout(dropout_rate)(x_in)
+        x = Dropout(dropout_rate)(x_in)
+    #print('Added Dropout')    
     for ix in range(len(filter_sizes)):
-        x = create_channel(x_in, filter_sizes[ix], feature_maps[ix])
-        channels.append(x)
+        conv = create_channel(x, filter_sizes[ix], feature_maps[ix])
+    #    print('Created Channel')
+        channels.append(conv)
     
     # Concatenate all channels
     x = concatenate(channels)
@@ -67,15 +69,13 @@ def build_cnn(embedding_layer=None, num_words=None,
         x = Dropout(dropout_rate)(x)
     x = Activation('relu')(x)
     x = Dense(1, activation='softmax')(x)
-    
     return Model(inputs=x_in, outputs=x)
     
 def create_channel(x, filter_size, feature_map):
     """
     Creates a layer working channel wise
     """
-    x = Conv1D(feature_map, kernel_size=filter_size, activation='relu', strides=1,
-               padding='same', kernel_regularizer=regularizers.l2(0.03))(x)
+    x = Conv1D(feature_map, kernel_size=(filter_size), activation='relu', strides=1, padding='same', kernel_regularizer=regularizers.l2(0.03))(x)
     x = MaxPooling1D(pool_size=2, strides=1, padding='valid')(x)
     x = Flatten()(x)
     return x
