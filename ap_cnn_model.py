@@ -53,7 +53,6 @@ def build_cnn(embedding_layer=None, num_words=None,
     
     channels = []
     x_in = Input(shape=(max_seq_length,embedding_dim), dtype='float64')
-    # emb_layer = embedding_layer(x_in)
     if dropout_rate:
         # emb_layer  = Dropout(dropout_rate)(x_in)
         x_in = Dropout(dropout_rate)(x_in)
