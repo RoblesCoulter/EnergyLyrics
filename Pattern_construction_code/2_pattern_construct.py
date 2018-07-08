@@ -17,9 +17,9 @@ sys.setrecursionlimit(100000)
 
 emotion_num = 4
 
-cc_threshold = 0.2 # 0.81 #591 nodes
+cc_threshold = 0.2 # 0.81 # 591 nodes
 
-ec_threshold = 0.67#0.02 # 0.0022 # 720 nodes
+ec_threshold = 0.67 #0.02 # 0.0022 # 720 nodes
 
 # file_path = './datasets/elvis_after_preprocessing_dataset'
 
