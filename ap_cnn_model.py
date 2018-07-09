@@ -17,7 +17,7 @@ __version__ = '0.0.1'
 
 def build_cnn(embedding_layer=None, num_words=None,
               embedding_dim=None, filter_sizes=[3,4,5],
-              feature_maps=[100,100,100], max_seq_length=100, dropout_rate=None):
+              feature_maps=[100,100,100], max_seq_length=100, dropout_rate=None,num_emo = 4):
     """
     Building a CNN for text classification
     
@@ -67,7 +67,8 @@ def build_cnn(embedding_layer=None, num_words=None,
     if dropout_rate:
         x = Dropout(dropout_rate)(x)
     x = Activation('relu')(x)
-    x = Dense(1, activation='softmax')(x)
+    print('Hello')
+    x = Dense(units=num_emo, activation='softmax')(x)
     return Model(inputs=x_in, outputs=x)
     
 def create_channel(x, filter_size, feature_map):
