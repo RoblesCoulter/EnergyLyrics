@@ -47,6 +47,7 @@ def build_cnn(embedding_layer=None, num_words=None, num_channels= 1,
     print('Filter sizes: %s' % filter_sizes)
     print('Feature maps: %s' % feature_maps)
     print('Max sequence: %i' % max_seq_length)
+    print('Num Channels: %i' % num_channels)
     print('#############################################')  
     
     
